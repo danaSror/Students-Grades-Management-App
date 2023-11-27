@@ -21,21 +21,23 @@ Welcome to the Students Grades Management App! This web application allows you t
 
 ## Installation 🔧
 
-1. Clone the repository:
-
-```bash
-git clone https://github.com/danaSror/Students-Grades-Management-App.git
-cd Students-Grades-Management-App
-
-2. Install dependencies:
-
-npm install
-
-3. Start the development server:
-
-npm start
-
-4. Visit http://localhost:3000 in your browser to use the app.
+    1. Clone the repository:
+  
+    ```bash
+    git clone https://github.com/danaSror/Students-Grades-Management-App.git
+    cd Students-Grades-Management-App
+  
+    2. Install dependencies:
+    
+    ```bash
+    npm install
+  
+    3. Start the development server:
+    
+    ```bash
+    npm start
+  
+    4. Visit http://localhost:3000 in your browser to use the app.
 
 ## How to Contribute 🤝
 If you want to contribute to this project and make it better, your help is very welcome. Open an issue or submit a pull request to contribute.
