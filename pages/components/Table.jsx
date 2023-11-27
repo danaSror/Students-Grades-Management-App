@@ -19,7 +19,6 @@ function Table() {
     fetchData();
   }, []);
 
- 
   const writeToJSONFile = async () => {
     try {
       const response = await fetch("/api/writeData", {
@@ -37,25 +36,23 @@ function Table() {
     }
   };
 
-
-
   const sortTableByTotal = () => {
     const sortedTable = [...dataTable].sort(
-      (a, b) => (b.algoScore + b.frontScore) - (a.algoScore + a.frontScore)
+      (a, b) => b.algoScore + b.frontScore - (a.algoScore + a.frontScore)
     );
     setDataTable(sortedTable);
   };
 
   return (
     <div className="h-screen mt-10">
-      <form class="max-w-md mx-auto">
-        <div class="grid md:grid-cols-3 md:gap-6">
-          <div class="relative z-0 w-full mb-5 group">
+      <form className="max-w-md mx-auto">
+        <div className="grid md:grid-cols-3 md:gap-6">
+          <div className="relative z-0 w-full mb-5 group">
             <input
               type="text"
               name="floating_first_name"
               id="floating_first_name"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
               value={dataForm.name}
@@ -64,18 +61,18 @@ function Table() {
               }
             />
             <label
-              for="floating_first_name"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              htmlFor="floating_first_name"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Student Name
             </label>
           </div>
-          <div class="relative z-0 w-full mb-5 group">
+          <div className="relative z-0 w-full mb-5 group">
             <input
               type="text"
               name="floating_last_name"
               id="floating_last_name"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
               value={dataForm.algoScore}
@@ -87,18 +84,18 @@ function Table() {
               }
             />
             <label
-              for="floating_last_name"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              htmlFor="floating_last_name"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Algo Score
             </label>
           </div>
-          <div class="relative z-0 w-full mb-5 group">
+          <div className="relative z-0 w-full mb-5 group">
             <input
               type="text"
               name="floating_last_name"
               id="floating_last_name"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
               value={dataForm.frontScore}
@@ -110,17 +107,17 @@ function Table() {
               }
             />
             <label
-              for="floating_last_name"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              htmlFor="floating_last_name"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Fronted Score
             </label>
           </div>
         </div>
-        <div class="grid md:grid-cols-2 md:gap-6">
+        <div className="grid md:grid-cols-2 md:gap-6">
           <button
             type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm   px-1 py-0.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm   px-1 py-0.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             onClick={(e) => {
               e.preventDefault();
               setDataForm({
@@ -142,7 +139,7 @@ function Table() {
           </button>
           <button
             type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm   px-1 py-0.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm   px-1 py-0.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             onClick={(e) => {
               e.preventDefault();
               setDataTable([]);
@@ -153,27 +150,32 @@ function Table() {
           </button>
         </div>
       </form>
-      <div class="flex flex-col items-center">
-        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div class="inline-block py-2 sm:px-4 lg:px-5">
-            <div class="overflow-hidden">
-              <table class=" text-left text-sm font-light">
-                <thead class="border-b font-medium dark:border-neutral-500">
+      <div className="flex flex-col items-center">
+        <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="inline-block py-2 sm:px-4 lg:px-5">
+            <div className="overflow-hidden">
+              <table className=" text-left text-sm font-light">
+                <thead className="border-b font-medium dark:border-neutral-500">
                   <tr>
-                    <th scope="col" class="px-4 py-4">
+                    <th scope="col" className="px-4 py-4">
                       Student Name
                     </th>
-                    <th scope="col" class="px-4 py-4">
+                    <th scope="col" className="px-4 py-4">
                       Algo Score
                     </th>
-                    <th scope="col" class="px-4 py-4">
+                    <th scope="col" className="px-4 py-4">
                       Front Score
                     </th>
-                    <th scope="col" class="px-6 py-4 flex items-center">
+                    <th scope="col" className="px-6 py-4 flex items-center">
                       Total
-                      <a href="#" onClick={() => {sortTableByTotal()}}>
+                      <a
+                        href="#"
+                        onClick={() => {
+                          sortTableByTotal();
+                        }}
+                      >
                         <svg
-                          class="w-3 h-3 ms-1.5"
+                          className="w-3 h-3 ms-1.5"
                           aria-hidden="true"
                           xmlns="http://www.w3.org/2000/svg"
                           fill="currentColor"
@@ -186,20 +188,20 @@ function Table() {
                   </tr>
                 </thead>
                 <tbody>
-                  {dataTable.map((item) => (
+                  {dataTable.map((item,index) => (
                     <tr
-                      class="border-b transition duration-300 ease-in-out hover:bg-blue-100 dark:border-neutral-500 dark:hover:bg-neutral-600"
-                      key={item.id}
+                    className="border-b transition duration-300 ease-in-out hover:bg-blue-100 dark:border-neutral-500 dark:hover:bg-neutral-600"
+                      key={index}
                     >
-                      <td class="whitespace-nowrap px-6 py-4">{item.name}</td>
-                      <td class="whitespace-nowrap px-6 py-4">
+                      <td className="whitespace-nowrap px-6 py-4">{item.name}</td>
+                      <td className="whitespace-nowrap px-6 py-4">
                         {item.algoScore}
                       </td>
-                      <td class="whitespace-nowrap px-6 py-4">
+                      <td className="whitespace-nowrap px-6 py-4">
                         {item.frontScore}
                       </td>
 
-                      <td class="whitespace-nowrap px-6 py-4">
+                      <td className="whitespace-nowrap px-6 py-4">
                         {item.algoScore + item.frontScore}
                       </td>
                     </tr>
