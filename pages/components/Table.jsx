@@ -1,22 +1,11 @@
 import { useState, useEffect } from "react";
-// import fs from 'fs/promises';
-// import * as fs from 'fs';
-// import path from 'path'
-
-// async function fetchData () {
-//     const fetchData = await fs.readFile('./api/data.json');
-//     return fetchData;
-//   }
 
 function Table() {
-  // const fs = require('fs');
-  // const filePath = path.resolve('./api', 'data.json');
-
   const [dataForm, setDataForm] = useState({
     name: "",
-    algoScore: Number,
-    frontScore: Number,
-    total: Number,
+    algoScore: "",
+    frontScore: "",
+    total: "",
   });
 
   const [dataTable, setDataTable] = useState([]);
@@ -30,25 +19,7 @@ function Table() {
     fetchData();
   }, []);
 
-  //   useEffect(() => {
-  //     const writeToJSONFile = async () => {
-  //       try {
-  //         const response = await fetch("/api/writeData", {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify({ data: dataTable }),
-  //         });
-
-  //         const result = await response.json();
-  //         console.log("Data written to JSON file:", result);
-  //       } catch (error) {
-  //         console.error("Error writing data to JSON file:", error);
-  //       }
-  //     };
-  //     writeToJSONFile();
-  //   }, []);
+ 
   const writeToJSONFile = async () => {
     try {
       const response = await fetch("/api/writeData", {
@@ -66,28 +37,17 @@ function Table() {
     }
   };
 
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       const response = await fsp.readFile('.api/data.json');
-  //       const data = await response.json();
-  //       setDataTable(data);
-  //       };
-  //       fetchData();
-  //   }, []);
 
-  // const fetchData = async () => {
-  //     const response = await fetch('/api/data')
-  //     const data = await response.json();
-  //     console.log(data);
-  //   }
-  // const fetchData = async () => {
-  // const response = await fetch('/data.json');
-  // const data = await response.json();
-  // console.log(data);
-  //   }
+
+  const sortTableByTotal = () => {
+    const sortedTable = [...dataTable].sort(
+      (a, b) => (b.algoScore + b.frontScore) - (a.algoScore + a.frontScore)
+    );
+    setDataTable(sortedTable);
+  };
 
   return (
-    <div>
+    <div className="h-screen mt-10">
       <form class="max-w-md mx-auto">
         <div class="grid md:grid-cols-3 md:gap-6">
           <div class="relative z-0 w-full mb-5 group">
@@ -107,7 +67,7 @@ function Table() {
               for="floating_first_name"
               class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
-              Name
+              Student Name
             </label>
           </div>
           <div class="relative z-0 w-full mb-5 group">
@@ -167,13 +127,15 @@ function Table() {
                 ...dataForm,
                 total: dataForm.algoScore + dataForm.frontScore,
               });
-                dataTable.push(dataForm);
-                console.log(dataTable);
+              dataTable.push(dataForm);
+              console.log(dataTable);
               writeToJSONFile();
-              setDataForm({ ...dataForm, name: "" });
-              setDataForm({ ...dataForm, algoScore: 0 });
-              setDataForm({ ...dataForm, frontScore: 0 });
-              setDataForm({ ...dataForm, total: 0 });
+              setDataForm({
+                name: "",
+                algoScore: "",
+                frontScore: "",
+                total: "",
+              });
             }}
           >
             Submit
@@ -181,12 +143,16 @@ function Table() {
           <button
             type="submit"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm   px-1 py-0.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            onClick={(e) => {
+              e.preventDefault();
+              setDataTable([]);
+              writeToJSONFile();
+            }}
           >
             clear all
           </button>
         </div>
       </form>
-
       <div class="flex flex-col items-center">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="inline-block py-2 sm:px-4 lg:px-5">
@@ -195,7 +161,7 @@ function Table() {
                 <thead class="border-b font-medium dark:border-neutral-500">
                   <tr>
                     <th scope="col" class="px-4 py-4">
-                      Name
+                      Student Name
                     </th>
                     <th scope="col" class="px-4 py-4">
                       Algo Score
@@ -203,8 +169,19 @@ function Table() {
                     <th scope="col" class="px-4 py-4">
                       Front Score
                     </th>
-                    <th scope="col" class="px-6 py-4">
+                    <th scope="col" class="px-6 py-4 flex items-center">
                       Total
+                      <a href="#" onClick={() => {sortTableByTotal()}}>
+                        <svg
+                          class="w-3 h-3 ms-1.5"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                        </svg>
+                      </a>
                     </th>
                   </tr>
                 </thead>
@@ -221,6 +198,7 @@ function Table() {
                       <td class="whitespace-nowrap px-6 py-4">
                         {item.frontScore}
                       </td>
+
                       <td class="whitespace-nowrap px-6 py-4">
                         {item.algoScore + item.frontScore}
                       </td>

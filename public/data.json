@@ -1,19 +1,26 @@
 [
   {
-    "name": "John",
-    "algoScore": 20,
-    "frontScore": 85,
-    "total": 105
-  },
-  {
-    "name": "Jane",
-    "algoScore": 80,
-    "frontScore": 75,
-    "total": 155
+    "name": "Harel",
+    "algoScore": 100,
+    "frontScore": 50,
+    "total": ""
   },
   {
     "name": "Dana",
     "algoScore": 50,
-    "frontScore": 50
+    "frontScore": 50,
+    "total": ""
+  },
+  {
+    "name": "Moria",
+    "algoScore": 20,
+    "frontScore": 10,
+    "total": ""
+  },
+  {
+    "name": "Avigail",
+    "algoScore": 50,
+    "frontScore": 20,
+    "total": ""
   }
 ]
