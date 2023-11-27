@@ -1,7 +1,6 @@
 # Students Grades Management App 🎓
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/danaSror/Students-Grades-Management-App?style=flat-square)
-![GitHub license](https://img.shields.io/github/license/danaSror/Students-Grades-Management-App?style=flat-square)
 
 Welcome to the Students Grades Management App! This web application allows you to manage and track students' grades easily. Keep all your grading data organized and accessible.
 
@@ -27,3 +26,27 @@ Welcome to the Students Grades Management App! This web application allows you t
 ```bash
 git clone https://github.com/danaSror/Students-Grades-Management-App.git
 cd Students-Grades-Management-App
+
+2. Install dependencies:
+```bash
+npm install
+
+3. Start the development server:
+```bash
+npm start
+
+4. Visit http://localhost:3000 in your browser to use the app.
+
+How to Contribute 🤝
+If you want to contribute to this project and make it better, your help is very welcome. Open an issue or submit a pull request to contribute.
+
+Connect with Me 🌐
+Feel free to connect with me for any questions or collaboration opportunities!
+
+LinkedIn
+GitHub
+Gmail
+WhatsApp
+
+License 📝
+This project is licensed under the MIT License.
