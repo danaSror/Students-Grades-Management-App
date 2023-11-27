@@ -39,18 +39,4 @@ Welcome to the Students Grades Management App! This web application allows you t
   
     4. Visit http://localhost:3000 in your browser to use the app.
 
-## How to Contribute 🤝
-If you want to contribute to this project and make it better, your help is very welcome. Open an issue or submit a pull request to contribute.
 
-## Connect with Me 🌐
-
-Feel free to connect with me for any questions or collaboration opportunities!
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-dana--sror-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/dana-sror/)
-[![GitHub](https://img.shields.io/badge/GitHub-danaSror-blue?style=flat-square&logo=github)](https://github.com/danaSror)
-[![Gmail](https://img.shields.io/badge/Gmail-dana.sror123%40gmail.com-red?style=flat-square&logo=gmail)](mailto:dana.sror123@gmail.com)
-[![WhatsApp](https://img.shields.io/badge/WhatsApp-+972522494184-green?style=flat-square&logo=whatsapp)](https://wa.me/972522494184)
-
-
-## License 📝
-This project is licensed under the MIT License.
