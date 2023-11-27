@@ -28,11 +28,11 @@ git clone https://github.com/danaSror/Students-Grades-Management-App.git
 cd Students-Grades-Management-App
 
 2. Install dependencies:
-```bash
+
 npm install
 
 3. Start the development server:
-```bash
+
 npm start
 
 4. Visit http://localhost:3000 in your browser to use the app.
