@@ -1,0 +1,19 @@
+[
+  {
+    "name": "John",
+    "algoScore": 20,
+    "frontScore": 85,
+    "total": 105
+  },
+  {
+    "name": "Jane",
+    "algoScore": 80,
+    "frontScore": 75,
+    "total": 155
+  },
+  {
+    "name": "Dana",
+    "algoScore": 50,
+    "frontScore": 50
+  }
+]

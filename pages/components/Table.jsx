@@ -1,10 +1,90 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+// import fs from 'fs/promises';
+// import * as fs from 'fs';
+// import path from 'path'
+
+// async function fetchData () {
+//     const fetchData = await fs.readFile('./api/data.json');
+//     return fetchData;
+//   }
 
 function Table() {
-  const [dataForm, setDataForm] = useState([
-    { id: 1, name: "John", algoScore: 20, frontScore: 85 },
-    { id: 2, name: "Jane", algoScore: 80, frontScore: 75 },
-  ]);
+  // const fs = require('fs');
+  // const filePath = path.resolve('./api', 'data.json');
+
+  const [dataForm, setDataForm] = useState({
+    name: "",
+    algoScore: Number,
+    frontScore: Number,
+    total: Number,
+  });
+
+  const [dataTable, setDataTable] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("/data.json");
+      const data = await response.json();
+      setDataTable(data);
+    };
+    fetchData();
+  }, []);
+
+  //   useEffect(() => {
+  //     const writeToJSONFile = async () => {
+  //       try {
+  //         const response = await fetch("/api/writeData", {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //           body: JSON.stringify({ data: dataTable }),
+  //         });
+
+  //         const result = await response.json();
+  //         console.log("Data written to JSON file:", result);
+  //       } catch (error) {
+  //         console.error("Error writing data to JSON file:", error);
+  //       }
+  //     };
+  //     writeToJSONFile();
+  //   }, []);
+  const writeToJSONFile = async () => {
+    try {
+      const response = await fetch("/api/writeData", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ data: dataTable }),
+      });
+
+      const result = await response.json();
+      console.log("Data written to JSON file:", result);
+    } catch (error) {
+      console.error("Error writing data to JSON file:", error);
+    }
+  };
+
+  //   useEffect(() => {
+  //     const fetchData = async () => {
+  //       const response = await fsp.readFile('.api/data.json');
+  //       const data = await response.json();
+  //       setDataTable(data);
+  //       };
+  //       fetchData();
+  //   }, []);
+
+  // const fetchData = async () => {
+  //     const response = await fetch('/api/data')
+  //     const data = await response.json();
+  //     console.log(data);
+  //   }
+  // const fetchData = async () => {
+  // const response = await fetch('/data.json');
+  // const data = await response.json();
+  // console.log(data);
+  //   }
 
   return (
     <div>
@@ -18,6 +98,10 @@ function Table() {
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
+              value={dataForm.name}
+              onChange={(e) =>
+                setDataForm({ ...dataForm, name: e.target.value })
+              }
             />
             <label
               for="floating_first_name"
@@ -34,6 +118,13 @@ function Table() {
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
+              value={dataForm.algoScore}
+              onChange={(e) =>
+                setDataForm({
+                  ...dataForm,
+                  algoScore: parseInt(e.target.value),
+                })
+              }
             />
             <label
               for="floating_last_name"
@@ -50,6 +141,13 @@ function Table() {
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
+              value={dataForm.frontScore}
+              onChange={(e) =>
+                setDataForm({
+                  ...dataForm,
+                  frontScore: parseInt(e.target.value),
+                })
+              }
             />
             <label
               for="floating_last_name"
@@ -63,6 +161,20 @@ function Table() {
           <button
             type="submit"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm   px-1 py-0.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            onClick={(e) => {
+              e.preventDefault();
+              setDataForm({
+                ...dataForm,
+                total: dataForm.algoScore + dataForm.frontScore,
+              });
+                dataTable.push(dataForm);
+                console.log(dataTable);
+              writeToJSONFile();
+              setDataForm({ ...dataForm, name: "" });
+              setDataForm({ ...dataForm, algoScore: 0 });
+              setDataForm({ ...dataForm, frontScore: 0 });
+              setDataForm({ ...dataForm, total: 0 });
+            }}
           >
             Submit
           </button>
@@ -97,7 +209,7 @@ function Table() {
                   </tr>
                 </thead>
                 <tbody>
-                  {dataForm.map((item) => (
+                  {dataTable.map((item) => (
                     <tr
                       class="border-b transition duration-300 ease-in-out hover:bg-blue-100 dark:border-neutral-500 dark:hover:bg-neutral-600"
                       key={item.id}
